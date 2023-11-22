@@ -9,11 +9,22 @@
 
 html {
   font-family: "AreaNeu", Arial, sans-serif;
-  font-size: 4px;
   color: white;
+  font-size: 4px;
 }
 
-/* Mobile font-sizes */
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 4.2px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 4.4px;
+  }
+}
+
 h2 {
   font-size: 5rem;
 }
@@ -30,44 +41,6 @@ span {
   font-size: 2.4rem;
 }
 
-/* Tablet font-sizes */
-@media only screen and (min-width: 768px) {
-  h2 {
-    font-size: 5.4rem;
-  }
-
-  h2 + a {
-    font-size: 5.8rem;
-  }
-
-  p {
-    font-size: 2.6rem;
-  }
-
-  span {
-    font-size: 2.6rem;
-  }
-}
-
-/* Laptop and Desktop font-sizes */
-@media only screen and (min-width: 1024px) {
-  h2 {
-    font-size: 5.8rem;
-  }
-
-  h2 + a {
-    font-size: 6.2rem;
-  }
-
-  p {
-    font-size: 2.8rem;
-  }
-
-  span {
-    font-size: 2.6rem;
-  }
-}
-
 /**
  * GENERAL STYLES
  * ----------------------------------------------------------------------------------------------------
@@ -78,7 +51,8 @@ span {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   overflow: hidden;
 }
 
@@ -87,7 +61,7 @@ main {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #0a0a0a;
+  background-color: #2b2b2b;
 }
 
 img {
@@ -105,22 +79,20 @@ a {
 
 /* Carousel layout */
 .pokemon-carousel {
-  position: relative;
-  height: 450px;
+  height: 520px;
   width: 300px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 20px black;
+  box-shadow: 0 0 10px black;
+  background-color: #161616;
 }
 
 /* Layout and basic sttyles of the carousel visualizer */
 .pokemon-carousel__slider {
-  width: 300%;
-  height: 100%;
+  height: 85%;
   display: flex;
   flex-flow: row nowrap;
-  transition: all .5s ease;
-  background-color: #131313;
+  transition: all 0.4s ease;
   transform: translateX(0%);
 }
 
@@ -128,11 +100,10 @@ a {
 .pokemon-carousel__card {
   display: flex;
   flex-direction: column;
-  width: calc(100% / 3);
+  width: 100%;
   height: 100%;
   border-radius: 10px;
   background-color: #131313;
-  transition: transform 1s ease-in-out;
 }
 
 /* Basic styles and layout fixes of the general info */
@@ -147,7 +118,7 @@ a {
 }
 .pokemon-carousel__general-info img {
   margin-top: 50px;
-  border-radius: 1000px;
+  border-radius: 100px;
   width: 50%;
 }
 .pokemon-carousel__general-info h2 {
@@ -183,32 +154,39 @@ a {
 }
 
 /* Carousel buttons positioning and styles */
+.pokemon-carousel__buttons {
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #161616;
+  -webkit-tap-highlight-color: transparent;
+}
 .pokemon-carousel__button {
-  position: absolute;
-  top: 56%;
-  font-size: 12rem;
+  border: none;
+  background-color: inherit;
+  height: 50px;
+  border-radius: 100px;
+  font-size: 50px;
   color: #ffffff;
-  height: 0;
   transition: 0.1s;
+}
+.pokemon-carousel__button--left {
+  margin-left: 10%;
+}
+.pokemon-carousel__button--right {
+  margin-right: 10%;
 }
 .pokemon-carousel__button i {
   box-shadow: 1px 1px 5px #ffffff;
   border-radius: 200px;
 }
 .pokemon-carousel__button:hover {
-  font-size: 12.2rem;
+  font-size: 52px;
   color: #bdbdbd;
   box-shadow: 1px 1px 5px #bdbdbd;
-  transition: 0.1s;
   cursor: pointer;
-}
-.pokemon-carousel__button--left {
-  left: 5%;
-  transform: translateX(-5%);
-}
-.pokemon-carousel__button--right {
-  left: 95%;
-  transform: translateX(-95%);
+  transition: 0.1s;
 }
 
 /* Card colors */
@@ -254,21 +232,66 @@ a {
   color: #37addd;
 }
 .pokemon-carousel__card--water .pokemon-carousel__general-info a:hover {
-  color: #37addd;
+  color: #15b5f5;
+}
+
+.pokemon-carousel__card--poison .pokemon-carousel__general-info {
+  border-bottom: 1px solid #411f4b;
+  background-image: url("../img/poison-type_background.jpg");
+}
+.pokemon-carousel__card--poison .pokemon-carousel__general-info img {
+  border: 4px solid #633071;
+  box-shadow: 0 0 8px #633071;
+}
+.pokemon-carousel__card--poison .pokemon-carousel__general-info a {
+  color: #633071;
+}
+.pokemon-carousel__card--poison .pokemon-carousel__general-info a:hover {
+  color: #9648ac;
+}
+
+.pokemon-carousel__card--ground .pokemon-carousel__general-info {
+  border-bottom: 1px solid #897a34;
+  background-image: url("../img/ground-type_background.jpg");
+}
+.pokemon-carousel__card--ground .pokemon-carousel__general-info img {
+  border: 4px solid #897a34;
+  box-shadow: 0 0 8px #897a34;
+}
+.pokemon-carousel__card--ground .pokemon-carousel__general-info a {
+  color: #897a34;
+}
+.pokemon-carousel__card--ground .pokemon-carousel__general-info a:hover {
+  color: #bea421;
+}
+
+.pokemon-carousel__card--normal .pokemon-carousel__general-info {
+  border-bottom: 1px solid #2d3031;
+  background-image: url("../img/normal-type_background.jpg");
+}
+.pokemon-carousel__card--normal .pokemon-carousel__general-info img {
+  border: 4px solid #484e51;
+  box-shadow: 0 0 8px #484e51;
+}
+.pokemon-carousel__card--normal .pokemon-carousel__general-info a {
+  color: #484e51;
+}
+.pokemon-carousel__card--normal .pokemon-carousel__general-info a:hover {
+  color: #cdd4d6;
 }
 
 /* Tablet responsive design */
 @media only screen and (min-width: 768px) {
   .pokemon-carousel {
+    height: 540px;
     width: 320px;
-    height: 475px;
   }
 }
 
 /* Laptop responsive design */
 @media only screen and (min-width: 1024px) {
   .pokemon-carousel {
-    height: 500px;
+    height: 560px;
     width: 340px;
   }
 }
