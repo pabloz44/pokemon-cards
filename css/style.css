@@ -51,9 +51,8 @@ span {
   box-sizing: border-box;
 }
 
-html,
 body {
-  overflow: hidden;
+  background-color: #252525;
 }
 
 main {
@@ -61,7 +60,6 @@ main {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #2b2b2b;
 }
 
 img {
