@@ -84,16 +84,15 @@ a {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0 10px black;
-  background-color: #161616;
+  background-color: #1a1a1a;
 }
 
-/* Layout and basic sttyles of the carousel visualizer */
+/* Layout and basic styles of the carousel slider */
 .pokemon-carousel__slider {
   height: 85%;
   display: flex;
   flex-flow: row nowrap;
   transition: all 0.4s ease;
-  transform: translateX(0%);
 }
 
 /* Layout and basic styles of the card */
@@ -159,7 +158,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #161616;
+  background-color: inherit;
   -webkit-tap-highlight-color: transparent;
 }
 .pokemon-carousel__button {
