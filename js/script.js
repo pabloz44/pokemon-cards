@@ -4,6 +4,8 @@ const slider = document.querySelector(".pokemon-carousel__slider");
 const cards = document.querySelectorAll(".pokemon-carousel__card").length;
 const buttons = document.querySelectorAll(".pokemon-carousel__button");
 
+slider.style.width = `${cards * 100}%`;
+
 let position = 0;
 
 buttons.forEach((button) => {
@@ -24,7 +26,6 @@ buttons.forEach((button) => {
       } else if (button.classList.contains("pokemon-carousel__button--right")) {
         position++;
       }
-      console.log(position);
       const transition = position * -(100 / cards);
       slider.style.transform = `translateX(${transition}%)`;
     }
