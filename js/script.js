@@ -1,12 +1,14 @@
 "use strict";
 
 const slider = document.querySelector(".pokemon-carousel__slider");
-const cards = document.querySelectorAll(".pokemon-carousel__card").length;
+const cards = document.querySelectorAll(".pokemon-carousel__card");
+const cards_lenght = document.querySelectorAll(
+  ".pokemon-carousel__card"
+).length;
 const buttons = document.querySelectorAll(".pokemon-carousel__button");
 
-slider.style.width = `${cards * 100}%`;
-
 let position = 0;
+slider.style.width = `${cards_lenght * 100}%`;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -14,20 +16,26 @@ buttons.forEach((button) => {
       position == 0 &&
       button.classList.contains("pokemon-carousel__button--left")
     ) {
-      position = 0;
+      slider.style.transform = `translateX(20px)`;
+      setTimeout(() => {
+        slider.style.transform = `translateX(${0}%)`;
+      }, 250);
     } else if (
-      position == cards-1 &&
+      position == cards_lenght - 1 &&
       button.classList.contains("pokemon-carousel__button--right")
     ) {
-      position = cards-1;
-    } else if (position >= 0 && position <= cards-1) {
+      slider.style.transform = `translateX(calc(${position * -(100 / cards_lenght)}% - 20px))`;
+      setTimeout(() => {
+        slider.style.transform = `translateX(${position * -(100 / cards_lenght)}%)`;
+      }, 250);
+    } else if (position >= 0 && position <= cards_lenght - 1) {
       if (button.classList.contains("pokemon-carousel__button--left")) {
         position--;
-      } else if (button.classList.contains("pokemon-carousel__button--right")) {
+      }
+      if (button.classList.contains("pokemon-carousel__button--right")) {
         position++;
       }
-      const transition = position * -(100 / cards);
-      slider.style.transform = `translateX(${transition}%)`;
+      slider.style.transform = `translateX(${position * -(100 / cards_lenght)}%)`;
     }
   });
 });
